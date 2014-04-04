@@ -28,7 +28,7 @@ function loadEnvironment(){
     return wintersmith(file);
 }
 
-function wintersmithBuild(){
+function wintersmithBuild(callback){
     // Try to load environment
     var env = loadEnvironment();
 
@@ -37,8 +37,7 @@ function wintersmithBuild(){
         if (error) {
             errorMessage(error);
         }
-        // Log on successful build
-        console.log('Wintersmith has finished building!');
+        callback();
     });
 }
 
