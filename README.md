@@ -39,7 +39,7 @@ The module has a few default settings. They can be overwritten in the following 
 
 	var runWintersmith = require('run-wintersmith');
 	
-	runWintersmith.settings.host = 'somehostname';
+	runWintersmith.settings.hostname = 'somehostname';
 	runWintersmith.settings.port = 8080;
 	runWintersmith.settings.configFile = 'myConfig.json';
 
@@ -47,7 +47,7 @@ The module has a few default settings. They can be overwritten in the following 
 
 Sets which Wintersmith configuration file to read from. Default is `config.json`.
 
-**settings.host**:
+**settings.hostname**:
 
 Sets the server hostname. Default is `localhost`. Only used in `preview` mode.
 
