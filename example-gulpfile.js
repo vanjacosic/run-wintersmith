@@ -8,11 +8,12 @@
 
 // Include gulp
 var gulp = require('gulp');
+var gutil = require('gulp-util');
 
 // Include plugins
-var clean = require('gulp-clean');
+var clean = require('gulp-rimraf');
 var refresh = require('gulp-livereload');
-var runWintersmith = require('./run-wintersmith');
+var runWintersmith = require('run-wintersmith');
 var lr = require('tiny-lr');
 var server = lr();
 
@@ -54,7 +55,7 @@ gulp.task('build', ['clean'], function(cb) {
     // Tell Wintersmith to build
     runWintersmith.build(function(){
         // Log on successful build
-        console.log('Wintersmith has finished building!');
+        gutil.log('Wintersmith has finished building!');
 
         // Tell gulp task has finished
         cb();
@@ -73,10 +74,18 @@ gulp.task('preview', function() {
 // Watch task
 //
 gulp.task('watch', ['preview-site', 'lr-server'], function(){
+    function reportChange(e) {
+        gutil.log(gutil.template('File <%= file %> was <%= type %>, rebuilding...', {
+            file: gutil.colors.cyan(e.path),
+            type: e.type
+        }));
+    }
 
     // Watch Jade template files
-    gulp.watch(TEMPLATES_DIR + '/**', ['refresh-browser']);
+    gulp.watch(TEMPLATES_DIR + '/**', ['refresh-browser'])
+    .on('change', reportChange);
 
     // Watch Markdown files
-    gulp.watch(CONTENT_DIR + '/**', ['refresh-browser']);
+    gulp.watch(CONTENT_DIR + '/**', ['refresh-browser'])
+    .on('change', reportChange);
 });
