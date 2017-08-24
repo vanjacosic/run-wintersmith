@@ -32,6 +32,6 @@
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "dependencies": {
-        "wintersmith": "^2.1.0"
+        "wintersmith": "^2.4.1"
     }
 }
