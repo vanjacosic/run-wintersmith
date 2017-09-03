@@ -1,6 +1,6 @@
 {
     "name": "run-wintersmith",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "Node module for controlling the Wintersmith static site generator. Useful for task runners like gulp.",
     "license": "MIT",
     "homepage": "https://github.com/vanjacosic/run-wintersmith",
